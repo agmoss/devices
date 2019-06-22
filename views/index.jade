@@ -4,5 +4,6 @@ block content
   h1= title
   p Welcome to #{title}
 
-  -var ob = JSON.stringify(json);
-    p #{ob}
+  script.
+    var data = JSON.parse('!{JSON.stringify(json)}');
+    var output = timeSeries(data);
