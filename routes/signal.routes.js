@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var signal_controller = require('../../controllers/signal.controller');
+var signal_controller = require('../controllers/signal.controller');
 
 // All signal data
 router.get('/all', signal_controller.signal_model_all);

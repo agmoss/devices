@@ -6,8 +6,8 @@ exports.signal_model_all = function(req, res, next) {
     signal.scan({},(err,list_signals) => {
         if (err) { return next(err); }
         //Successful, so render
-        //res.render('signal_list', { title: 'Signal List', signal_model_all: list_signals});
-        res.status(200).json(list_signals);
+        res.render('index', { title: 'Signal List', json: list_signals});
+        //res.status(200).json(list_signals);
     })
 };
 
