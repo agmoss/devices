@@ -12,7 +12,7 @@ lineData.sort(function(a,b){
 });
 
 var height  = 800;
-var width   = 3000;
+var width   = 2000;
 var hEach   = 100;
 
 var margin = {top: 20, right: 15, bottom: 25, left: 25};
@@ -33,7 +33,8 @@ x.domain(d3.extent(lineData, function(d) { return d.date; }));
 
 var y = d3.scaleLinear().range([height, 0]);
 
-y.domain([d3.min(lineData, function(d) { return d.nps; }) - 5, 100]);
+// Y axis range
+y.domain([d3.min(lineData, function(d) { return d.nps; }) - 5, d3.max(lineData, function(d) { return d.nps; })+5]);
 
 var valueline = d3.line()
         .x(function(d) { return x(d.date); })
@@ -45,8 +46,8 @@ svg.append("path")
     .attr("class", "line")  
     .attr("d", valueline); 
 
-//  var xAxis_woy = d3.axisBottom(x).tickFormat(d3.timeFormat("Week %V"));
-var xAxis_woy = d3.axisBottom(x).ticks(11).tickFormat(d3.timeFormat("%y-%b-%d")).tickValues(lineData.map(d=>d.date));
+var xAxis_woy = d3.axisBottom(x).tickFormat(d3.timeFormat("Week %V"));
+//var xAxis_woy = d3.axisBottom(x).ticks(11).tickFormat(d3.timeFormat("%y-%b-%d")).tickValues(lineData.map(d=>d.date));
 
 svg.append("g")
         .attr("class", "x axis")
@@ -54,7 +55,7 @@ svg.append("g")
         .call(xAxis_woy);
 
 //  Add the Y Axis
-//  svg.append("g").call(d3.axisLeft(y));
+svg.append("g").call(d3.axisLeft(y));
 
 svg.selectAll(".dot")
     .data(lineData)

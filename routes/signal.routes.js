@@ -4,7 +4,7 @@ var router = express.Router();
 var signal_controller = require('../controllers/signal.controller');
 
 // All signal data
-router.get('/all', signal_controller.signal_model_all);
+router.get('/', signal_controller.signal_model_all);
 
 // Filter by status
 router.get('/status/:status',signal_controller.signal_model_status);
