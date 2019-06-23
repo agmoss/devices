@@ -4,6 +4,11 @@ block content
   h1= title
   p Welcome to #{title}
 
+  select#selectStatus
+
+  // D3 SVG
+  #viz
+    
   script.
-    var data = JSON.parse('!{JSON.stringify(json)}');
-    var output = timeSeries(data);
+    var data1 = JSON.parse('!{JSON.stringify(json)}');
+    var data = timeSeries(data1);

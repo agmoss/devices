@@ -4,11 +4,12 @@ html
     title= title
     
     script(type='text/javascript',src="https://d3js.org/d3.v5.min.js",crossorigin="anonymous")
+    script(type='text/javascript',src="https://d3js.org/d3-scale-chromatic.v1.min.js",crossorigin="anonymous")
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(type='text/javascript',src='/javascripts/seriesMaker.js')
 
   body
     block content
-    #chartId
-    script(type='text/javascript',src='/javascripts/line.js')
+    // Time series chart with status ddl
+    script(type='text/javascript',src='/javascripts/lineStatus.js')
     

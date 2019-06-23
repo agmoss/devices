@@ -6,7 +6,7 @@ function timeSeries(data){
         map[val.entry_date][val.status]++;
       });
 
-    var output = Object.keys(map).map(function(key){
+    var data = Object.keys(map).map(function(key){
         var tmpArr = [];
         var dict = {};
         for(var status in map[key])
@@ -14,8 +14,8 @@ function timeSeries(data){
             tmpArr.push({key:status,value:map[key][status]})
             dict[status] = map[key][status];
         }
-        return {date : key, status: dict};
+        return {date : new Date(key), status: dict};
     })
-    
-    return output;
+
+    return data;
 }
