@@ -1,4 +1,6 @@
+const config = require('../config/config');
 const dynamoose = require('dynamoose');
+dynamoose.AWS.config.update(config.aws_remote_config);
 
 const Schema = dynamoose.Schema;
 
