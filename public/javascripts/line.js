@@ -15,11 +15,13 @@ var height  = 800;
 var width   = 2000;
 var hEach   = 100;
 
+// set the dimensions and margins of the graph
 var margin = {top: 20, right: 15, bottom: 25, left: 25};
 
 width =     width - margin.left - margin.right;
 height =    height - margin.top - margin.bottom;
 
+// append the svg object to the body of the page
 var svg = d3.select('body').append("svg")
   .attr("width",  width + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom)
