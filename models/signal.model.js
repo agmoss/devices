@@ -12,5 +12,5 @@ const assetsSchema = new Schema({
 });
 
 // Compile model from schema
-module.exports =  dynamoose.model('assets', assetsSchema);
+module.exports =  dynamoose.model('assets1', assetsSchema);
 
