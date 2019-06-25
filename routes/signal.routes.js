@@ -18,4 +18,7 @@ router.get('/assetun/:assetun/status/:status',signal_controller.signal_model_ass
 // Create a new signal
 router.post('/signal/add', signal_controller.add_signal);
 
+// Delete a signal entry
+router.delete('/signal/delete/:key',signal_controller.delete_signal)
+
 module.exports = router;
