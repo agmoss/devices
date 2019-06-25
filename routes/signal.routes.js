@@ -15,4 +15,7 @@ router.get('/assetun/:assetun',signal_controller.signal_model_assetUN);
 // Filter by assetun and status
 router.get('/assetun/:assetun/status/:status',signal_controller.signal_model_assetUN_status);
 
+// Create a new signal
+router.post('/signal/add', signal_controller.add_signal);
+
 module.exports = router;

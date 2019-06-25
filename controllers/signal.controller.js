@@ -37,3 +37,26 @@ exports.signal_model_assetUN_status = function(req, res, next) {
         res.status(200).json(data);
     })
 };
+
+
+// POST Data
+exports.add_signal = function(req,res){
+
+    let sig = new signal({
+        key: req.body.key,
+        AssetUN: req.body.assetUn,
+        entry_date: req.body.entry_date,
+        status:req.body.status
+    })
+
+    sig.save().then((stat)=>{
+        res.send(stat)
+    })
+    .catch(error => {
+        console.log(error);
+        res.send(error);
+      });
+
+}
+
+// Delete a signal

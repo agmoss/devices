@@ -1,5 +1,5 @@
 // set the dimensions and margins of the graph
-var margin = {top: 10, right: 100, bottom: 30, left: 30},
+var margin = {top: 10, right: 100, bottom: 30, left: 100},
     width = 2000 - margin.left - margin.right,
     height = 800 - margin.top - margin.bottom;
 
@@ -35,21 +35,56 @@ var myColor = d3.scaleOrdinal()
     .domain(allGroup)
     .range(d3.schemeSet2);
 
-// Add X axis --> it is a date format
 var x = d3.scaleTime()
     .domain(d3.extent(data, function(d) {return d.date;}))
     .range([0, width]);
 
-    svg.append("g")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x));
-
-// Add Y axis
 var y = d3.scaleLinear()
     .domain( [d3.min(data, function(d) { return d.status['Active']; }) - 5, d3.max(data, function(d) { return d.status['Active']; })+5])
     .range([ height, 0 ]);
-    svg.append("g")
-        .call(d3.axisLeft(y));
+
+// Axis
+var xAxis = d3.axisBottom(x)
+    .scale(x)
+    .tickPadding(10)
+
+var yAxis = d3.axisLeft(y)
+    .scale(y)
+
+
+// Add x and y axis
+var gX = svg.append("g")
+  .attr("class", "axis--x")
+  .attr("transform", "translate(0," + height + ")")
+  .call(xAxis)
+
+var gY = svg.append("g")
+  .attr("class", "axis--y")
+  .call(yAxis)
+
+
+// Axis style
+gY.select('.domain').attr('stroke-width', '3px');
+
+gY.selectAll('.tick line')  // '.tick' is the <g> element of ticks, and <line> and <text> are in it
+    .attr('stroke-width', '3px');
+
+gY.selectAll('.tick text')
+    .attr('font-size', 15)
+    .attr('font-family', 'serif')
+    .attr('fill', 'black');
+
+
+gX.select('.domain').attr('stroke-width', '3px');
+
+gX.selectAll('.tick line')  // '.tick' is the <g> element of ticks, and <line> and <text> are in it
+    .attr('stroke-width', '3px');
+
+gX.selectAll('.tick text')
+    .attr('font-size', 15)
+    .attr('font-family', 'serif')
+    .attr('fill', 'black');
+
 
 // Initialize line with group a
 var line = svg
@@ -63,7 +98,6 @@ var line = svg
     .attr("stroke", function(d){ return myColor("Active")})
     .style("stroke-width", 4)
     .style("fill", "none");
-    
 
 // A function that update the chart
 function update(selectedGroup) {
