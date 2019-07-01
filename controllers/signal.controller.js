@@ -43,7 +43,7 @@ exports.signal_model_assetUN_status = function(req, res, next) {
 exports.add_signal = function(req,res){
 
     // Validate request
-    if(!req.body.key && !req.body.assetUn && !req.body.entry_date && !req.body.status) {
+    if(!req.body.key && !req.body.AssetUN && !req.body.entry_date && !req.body.status) {
         return res.status(400).send({
             message: "Signal can not be empty"
         });
@@ -51,7 +51,7 @@ exports.add_signal = function(req,res){
 
     let sig = new Signal({
         key: req.body.key,
-        AssetUN: req.body.assetUn,
+        AssetUN: req.body.AssetUN,
         entry_date: req.body.entry_date,
         status:req.body.status
     })
