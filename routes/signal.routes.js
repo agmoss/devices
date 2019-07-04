@@ -7,13 +7,13 @@ var signal_controller = require('../controllers/signal.controller');
 router.get('/signal/all', signal_controller.signal_model_all);
 
 // Filter by status
-router.get('/status/:status',signal_controller.signal_model_status);
+router.get('/signal/status/:status',signal_controller.signal_model_status);
 
 // Filter by assetun
-router.get('/assetun/:assetun',signal_controller.signal_model_assetUN);
+router.get('/signal/assetun/:assetun',signal_controller.signal_model_assetUN);
 
 // Filter by assetun and status
-router.get('/assetun/:assetun/status/:status',signal_controller.signal_model_assetUN_status);
+router.get('signal/assetun/:assetun/status/:status',signal_controller.signal_model_assetUN_status);
 
 // Create a new signal
 router.post('/signal/add', signal_controller.add_signal);

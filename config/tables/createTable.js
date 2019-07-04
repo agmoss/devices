@@ -1,9 +1,12 @@
 var AWS = require("aws-sdk");
 var config = require('../config/config');
+var dynamodb = new AWS.DynamoDB();
+
+/**
+ * Create an AWS dynamo db table
+ */
 
 AWS.config.update(config.aws_remote_config);
-
-var dynamodb = new AWS.DynamoDB();
 
 var params = {
     TableName : config.aws_table_name,
