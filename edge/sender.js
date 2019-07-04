@@ -1,7 +1,11 @@
 const axios = require("axios");
 const uuidv4 = require('uuid/v4');
 
-//send the API request
+/**
+ * Send a post request to /signal/add
+ * 
+ * This function is used in conjunction with poster.js to simulate a single IoT device
+ */
 function sendOne(record){
 
     axios.post('http://localhost:3005/signal/add', {

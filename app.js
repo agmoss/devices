@@ -5,8 +5,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-//var indexRouter = require('./routes/index');
-//var usersRouter = require('./routes/users');
 var signalsRouter = require('./routes/signal.routes');
 
 var app = express();
@@ -24,8 +22,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-//app.use('/', indexRouter);
-//app.use('/users', usersRouter);
+// Signal app main router
 app.use('/',signalsRouter);
 
 // catch 404 and forward to error handler

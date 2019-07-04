@@ -2,16 +2,15 @@ const StreamArray = require('stream-json/streamers/StreamArray');
 const path = require('path');
 const fs = require('fs');
 const uuidv4 = require('uuid/v4');
-
 const jsonStream = StreamArray.withParser();
-
 var config = require('../config/config');
 
 
-//You'll get json objects here
-//Key is an array-index here
+/**
+ * Read in a large json file and popluate a dynamo table
+ */
+
 jsonStream.on('data', ({key, value}) => {
-    //console.log(key, value);
 
     var params = {
         TableName: config.aws_table_name,

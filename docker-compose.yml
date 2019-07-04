@@ -1,10 +1,11 @@
 version: '3'
 
 services:
+  #TODO: Add the react service to the compose
   web:
     image: devices:test
     build:
       context: ./
       dockerfile: Dockerfile
     ports:
-      - 3000:3000
+      - 3005:3005 # Ports on 3005 as to not conflict with react server on 3000
