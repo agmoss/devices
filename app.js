@@ -5,6 +5,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+var cors = require('cors');
+
 var signalsRouter = require('./routes/signal.routes');
 
 var app = express();
@@ -13,6 +15,8 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+//TODO: Set the origin of the dashboard
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

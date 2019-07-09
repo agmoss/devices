@@ -3,7 +3,7 @@ version: '3'
 services:
   #TODO: Add the react service to the compose
   web:
-    image: devices:test
+    image: m0sscr.azurecr.io/devices:latest
     build:
       context: ./
       dockerfile: Dockerfile
