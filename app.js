@@ -4,7 +4,6 @@ var bodyParser = require("body-parser");
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
 var cors = require('cors');
 
 var signalsRouter = require('./routes/signal.routes');
@@ -40,8 +39,9 @@ app.use(function(err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
+  // render the error info as JSON
   res.status(err.status || 500);
+  res.json({"error":err.stack});
   res.render('error');
 });
 
